@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request
 from image_processings import divide_image
 from mnist_model import process_and_predict_mnist
+import shutil
 
 app = Flask(__name__)
 
@@ -31,6 +32,11 @@ def upload():
 
     # Process the cell images and make predictions
     result = process_and_predict_mnist()
+    shutil.rmtree('row')
+    for filename in os.listdir('uploads'):
+        file_path = os.path.join('uploads', filename)
+        if os.path.isfile(file_path):
+            os.remove(file_path)
 
     return f"Predicted Class Sums for Each Row: {result}, Total Sum: {sum(result)}"
 
