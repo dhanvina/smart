@@ -1,0 +1,47 @@
+/* CSS for the Header and Footer */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+}
+
+/* CSS for the Image Carousel */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Resize the carousel images */
+.carousel img {
+    width: 30%; /* Set the maximum width to the container's width */
+    height: auto; /* Maintain the aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+/* Apply scaling on hover (optional) */
+.carousel img:hover {
+    transform: scale(1.2);
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload and Processing</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <!-- Include the header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>File Upload and Processing</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+    <!-- Image Carousel -->
+    <div class="carousel">
+        <img src="{{ url_for('static', filename='images/sm.PNG') }}" alt="Image Description">
+        <img src="{{ url_for('static', filename='images/testsm1.PNG') }}" alt="Image Description">
+        <img src="{{ url_for('static', filename='images/testsm2.PNG') }}" alt="Image Description">
+    </div>
+
+    <!-- Include the footer -->
+    <footer>
+        <p>Contact us: ndhanvina07@gmail.com</p>
+    </footer>
+
+    <!-- JavaScript for the Image Carousel -->
+    <script src="script.js"></script>
+</body>
+</html>
