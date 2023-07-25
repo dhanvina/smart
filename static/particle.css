@@ -1,0 +1,20 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+/* Body styles */
+body {
+  margin: 0;
+  background: #000;
+  font-family: "Open Sans", sans-serif; /* Specify fallback fonts */
+}
+
+/* Canvas styles */
+canvas {
+  position: fixed;
+  top: 0; /* Add back the top property if required */
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  border: 2px solid white;
+}

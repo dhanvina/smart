@@ -27,6 +27,22 @@ footer {
     width: 100%;
 }
 
+#c {
+    width: 100%;
+    height: 100%;
+}
+
+.file-upload-container {
+    position: relative;
+    margin-top: 20px;
+    text-align: center;
+    top:50px ;
+}
+
+@media (max-width: 768px) {
+    /* Add any specific styling for smaller screens */
+}
+
 /* CSS for the Image Carousel */
 .carousel {
     display: flex;
@@ -44,4 +60,11 @@ footer {
 /* Apply scaling on hover (optional) */
 .carousel img:hover {
     transform: scale(1.2);
+}
+
+.navbar {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2; /* Add this line to set the stacking order */
 }

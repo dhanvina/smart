@@ -14,31 +14,64 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route('/upload', methods=['GET','POST'])
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+# @app.route('/upload', methods=['GET','POST'])
+# def upload():
+#     if 'file' not in request.files:
+#         return "No file part"
+    
+#     file = request.files['file']
+#     if file.filename == '':
+#         return "No selected file"
+    
+#     # Save the uploaded image to a temporary folder
+#     file_path = os.path.join('uploads', file.filename)
+#     file.save(file_path)
+
+#     # Divide the uploaded image into cells
+#     divide_image(file_path)
+
+#     # Process the cell images and make predictions
+#     result = process_and_predict_mnist()
+#     shutil.rmtree('row')
+#     for filename in os.listdir('uploads'):
+#         file_path = os.path.join('uploads', filename)
+#         if os.path.isfile(file_path):
+#             os.remove(file_path)
+
+#     return f"Predicted Class Sums for Each Row: {result}, Total Sum: {sum(result)}"
+
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
-    if 'file' not in request.files:
-        return "No file part"
-    
-    file = request.files['file']
-    if file.filename == '':
-        return "No selected file"
-    
-    # Save the uploaded image to a temporary folder
-    file_path = os.path.join('uploads', file.filename)
-    file.save(file_path)
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return "No file part"
+        
+        file = request.files['file']
+        if file.filename == '':
+            return "No selected file"
+        
+        # Save the uploaded image to a temporary folder
+        file_path = os.path.join('uploads', file.filename)
+        file.save(file_path)
 
-    # Divide the uploaded image into cells
-    divide_image(file_path)
+        # Divide the uploaded image into cells
+        divide_image(file_path)
 
-    # Process the cell images and make predictions
-    result = process_and_predict_mnist()
-    shutil.rmtree('row')
-    for filename in os.listdir('uploads'):
-        file_path = os.path.join('uploads', filename)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
+        # Process the cell images and make predictions
+        result = process_and_predict_mnist()
+        shutil.rmtree('row')
+        for filename in os.listdir('uploads'):
+            file_path = os.path.join('uploads', filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
 
-    return f"Predicted Class Sums for Each Row: {result}, Total Sum: {sum(result)}"
+        return render_template('upload.html', prediction_result=result, total_sum=sum(result))
+
+    return render_template('upload.html')
 
 
 
